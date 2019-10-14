@@ -36,9 +36,9 @@ def insertPass(path, username=None, password="", uris=None, totp=None, extra=Non
     p = subprocess.Popen(["gopass", "insert", "-m", "-f", path], stdin=subprocess.PIPE)
     stdout, stderr = p.communicate(input=msg.encode("utf-8"))
     if p.returncode != 0:
-        print("failed: %s" % stderr)
+        print("failed %s: %s" % (path, stderr))
     else:
-        print("ok: %s" % stdout)
+        print("ok %s: %s" % (path, stdout))
 
 
 def main():
