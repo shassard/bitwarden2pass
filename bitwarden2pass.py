@@ -31,7 +31,7 @@ def insertPass(path, username=None, password="", uris=None, totp=None, extra=Non
         msg += "otpauth://totp/totp-secret?secret=%s\n" % totp
     if extra:
         for name, value in extra:
-            msg += "%s = %s\n" % (name, value)
+            msg += "x_%s: %s\n" % (name, value)
 
     p = subprocess.Popen(["gopass", "insert", "-m", "-f", path], stdin=subprocess.PIPE)
     stdout, stderr = p.communicate(input=msg.encode("utf-8"))
